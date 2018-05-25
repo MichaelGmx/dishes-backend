@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Category Details</h4>
+            <p class="card-category">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <dl class="list">
+              <dt>Name</dt>
+              <dd>{{ category.category_name }}</dd>
+              <dt>Description</dt>
+              <dd>{{ category.category_description }}</dd>
+              <dt>Picture</dt>
+              <dd>{{ category.category_pic_path }}</dd>
+              <dt>Sort</dt>
+              <dd>{{ category.category_sort }}</dd>
+              <dt>Update Date</dt>
+              <dd>{{ category.update_date }}</dd>
+            </dl>
+            <div class="col-md-12 text-right">
+              <a [routerLink]="['/category-edit', category._id]" class="btn btn-info">EDIT</a>
+              <button (click)="deleteCategory(category._id)" class="btn btn-danger" type="button">DELETE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

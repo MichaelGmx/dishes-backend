@@ -1,0 +1,52 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Category List</h4>
+            <p class="card-category">Here is a subtitle for this table</p>
+            <button mat-raised-button mat-min-fab [routerLink]="['/category-create']" class="btn btn-success btn-just-icon btn-round ux-card-btn-float">
+              <i class="material-icons">playlist_add</i>
+            </button>
+            <button mat-raised-button mat-min-fab (click)="notify()" class="btn btn-primary btn-just-icon btn-round ux-card-btn-float" style="right: 100px;">
+              <i class="material-icons">add_alert</i>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Picture</th>
+                  <th>Sort</th>
+                  <th class="text-right">Action</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let category of lstOf_category">
+                    <td>{{ category.category_name }}</td>
+                    <td>{{ category.category_description }}</td>
+                    <td>
+                      <!-- {{ category.category_pic_path }} -->
+                      <img *ngIf="category.category_pic_path" [src]="category.category_pic_path_full" alt="category.category_pic_path">
+                    </td>
+                    <td>{{ category.category_sort }}</td>
+                    <td class="td-actions text-right">
+                      <button [routerLink]="['/category-details', category._id]" type="button" title="Show Details" class="btn btn-primary">
+                        <i class="material-icons">subject</i>
+                      </button>
+                      <button [routerLink]="['/category-edit', category._id]" type="button" title="Edit" class="btn btn-info">
+                        <i class="material-icons">edit</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

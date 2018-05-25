@@ -1,0 +1,158 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Dish Details</h4>
+            <p class="card-dish">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <!-- <div class="row list">
+              <dl class="col-md-9">
+                <dt>Name</dt>
+                <dd>{{ dish.dish_name }}</dd>
+                <dt>Description</dt>
+                <dd>{{ dish.dish_description }}</dd>
+                <dt>Picture</dt>
+                <dd>{{ dish.dish_pic_path }}</dd>
+                <dt>Sort</dt>
+                <dd>{{ dish.dish_sort }}</dd>
+                <dt>Update Date</dt>
+                <dd>{{ dish.update_date | date:'yyyy-MM-dd HH:mm:ss' }}</dd>
+              </dl>
+              <div class="col-md-3 ux-dish-details-img">
+                <img [src]="pic_base + dish.dish_pic_path" alt="dish.dish_pic_path">
+                
+              </div>
+            </div> -->
+
+            <div class="list row">
+              <div class="col-md-9">
+                <div class="row">
+                  <!-- Name -->
+                  <div class="col-sm-6">
+                    <div class="form-group row">
+                      <label for="name" class="col-md-4 col-form-label">Name</label>
+                      <div class="col-md-8">
+                        <input type="text" [(ngModel)]="dish.dish_name" placeholder="Dish Name" class="form-control" [disabled]="!editable">
+                      </div>
+                      <!-- <mat-form-field class="example-full-width col-md-8">
+                        <input [(ngModel)]="dish.dish_name" matInput type="text" placeholder="Dish Name">
+                      </mat-form-field> -->
+                    </div>
+                  </div>
+                  <!-- On Sale -->
+                  <div class="col-sm-6 form-check text-right">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="dish.dish_on_sale" [disabled]="!editable">
+                      On Sale
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- Category -->
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label for="category" class="col-md-4 col-form-label">Category</label>
+                      <div class="col-md-8">
+                        <mat-select placeholder="Category" name="category" ngClass="btn btn-primary" [disabled]="!editable">
+                          <mat-option *ngFor="let category of lstOf_category" [value]="category._id">
+                            {{ category.category_name }}
+                          </mat-option>
+                        </mat-select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Sort -->
+                  <div class="col-sm-3 offset-md-3">
+                    <div class="form-group row">
+                      <label for="sort" class="col-md-4 col-form-label">Sort</label>
+                      <div class="col-md-8">
+                        <input type="text" [(ngModel)]="dish.dish_sort" placeholder="Dish Sort" class="form-control" [disabled]="!editable">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Description -->
+                <div class="row form-group">
+                  <label for="description" class="col-md-2 col-form-label">Description</label>
+                  <div class="col-md-10">
+                    <mat-form-field>
+                      <textarea matInput [disabled]="!editable" rows="5"></textarea>
+                    </mat-form-field> 
+                  </div>
+                </div>
+                <!-- Has Multi Size -->
+                <div class="row">
+                  <div class="col-sm-3 form-check" style="padding-left: 30px;">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" [(ngModel)]="dish.has_multi_size" [disabled]="!editable">
+                      Has Multi Size
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="ux-dish-details-img">
+                  <img [src]="pic_base + dish.dish_pic_path" alt="dish.dish_pic_path">
+                  <div *ngIf="editable" class="text-center">
+                    <button type="button" class="btn btn-round btn-info">Modify</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Size -->
+            <div class="row form-group" *ngIf="dish.has_multi_size">
+              <label for="size" class="col-md-1 col-form-label">Size</label>
+              <div class="col-md-4">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>免费配料</td>
+                      <td>+燕麦</td>
+                      <td>+布丁</td>
+                      <td>+奶霜</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Tags -->
+            <div class="row form-group">
+              <label for="tags" class="col-md-1 col-form-label">Tags</label>
+              <button type="button" class="btn btn-round btn-sm btn-primary">热卖</button>
+              <button type="button" class="btn btn-round btn-sm btn-primary">店主推荐</button>
+            </div>
+            <!-- Update Date -->
+            <div class="row form-group">
+                <label for="update_date" class="col-md-1 col-form-label">Update Date</label>
+                <div class="col-md-3">
+                  <input type="text" [value]="dish.update_date | date:'yyyy-MM-dd HH:mm:ss'" placeholder="Update Date" class="form-control" [disabled]="true">
+                </div>
+              </div>
+
+            <!-- action -->
+            <div class="col-md-12 text-right">
+              <!-- <button [routerLink]="['/dish-edit', dish._id]" type="button" class="btn btn-info btn-round">
+                <i class="material-icons">edit</i>&nbsp;EDIT
+              </button> -->
+              <button (click)="editDish()" type="button" class="btn btn-info btn-round">
+                <i class="material-icons">edit</i>&nbsp;EDIT
+              </button>
+              <button (click)="deleteDish(dish._id)" type="button" class="btn btn-danger btn-round">
+                <i class="material-icons">delete</i>&nbsp;DELETE
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

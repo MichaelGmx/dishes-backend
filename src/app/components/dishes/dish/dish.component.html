@@ -1,0 +1,48 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Dish List</h4>
+            <p class="card-dish">Here is a subtitle for this table</p>
+            <!-- <button mat-raised-button mat-min-fab [routerLink]="['/dish-create']" class="btn btn-success btn-just-icon btn-round ux-card-btn-float">
+              <i class="material-icons">playlist_add</i>
+            </button>-->
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>Picture</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Sort</th>
+                  <th class="text-right">Action</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let dish of lstOf_dish">
+                    <td class="ux-dish-img">
+                      <img *ngIf="dish.dish_pic_path" [src]="dish.dish_pic_path_full" alt="dish.dish_pic_path">
+                    </td>
+                    <td>{{ dish.dish_name }}</td>
+                    <td>{{ dish.dish_description }}</td>
+                    <td>{{ dish.dish_sort }}</td>
+                    <td class="td-actions text-right">
+                      <button [routerLink]="['/dish-details', dish._id]" type="button" title="Show Details" class="btn btn-primary">
+                        <i class="material-icons">subject</i>
+                      </button>
+                      <button [routerLink]="['/dish-edit', dish._id]" type="button" title="Edit" class="btn btn-info">
+                        <i class="material-icons">edit</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

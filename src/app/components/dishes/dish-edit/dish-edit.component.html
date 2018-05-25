@@ -1,0 +1,37 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Add New Dish</h4>
+            <p class="card-dish">Here is a subtitle for this table</p>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="updateDish(dish._id, dish)" #dishForm="ngForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="dish.dish_name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Description</label>
+                <textarea class="form-control" [(ngModel)]="dish.dish_description" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="name">Picture Path</label>
+                <input type="text" class="form-control" [(ngModel)]="dish.dish_pic_path" name="pic_path" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Sort</label>
+                <input type="number" class="form-control" [(ngModel)]="dish.dish_sort" name="sort" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!dishForm.form.valid">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
