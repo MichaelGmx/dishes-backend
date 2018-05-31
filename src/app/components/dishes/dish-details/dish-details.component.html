@@ -108,17 +108,64 @@
                 </div>
               </div>
             </div>
+
+
+            <div class="row">
+              <div class="col-md-1">
+                <button type="button" class="btn btn-round btn-sm btn-success">
+                  <i class="material-icons">add</i>&nbsp;新增子产品
+                </button>
+              </div>
+            </div>
+
+
             <!-- Size -->
             <div class="row form-group" *ngIf="dish.has_multi_size">
               <label for="size" class="col-md-1 col-form-label">Size</label>
-              <div class="col-md-4">
+              <div class="table-responsive col-md-8">
                 <table class="table">
+                  <thead class="text-primary">
+                    <th></th>
+                    <th>名称</th>
+                    <th>价格</th>
+                    <th>图片</th>
+                    <th>是否上架</th>
+                    <th>库存</th>
+                    <th>排序</th>
+                    <th>默认</th>
+                    <th></th>
+                  </thead>
                   <tbody>
-                    <tr>
-                      <td>免费配料</td>
-                      <td>+燕麦</td>
-                      <td>+布丁</td>
-                      <td>+奶霜</td>
+                    <tr *ngFor="let size of lstOf_size">
+                      <td [attr.rowspan]="size.count" *ngIf="size.is_default">
+                        <input type="text" [(ngModel)]="size.size_category">
+                      </td>
+                      <td>
+                        <input type="text" placeholder="5字以内" [(ngModel)]="size.size_name">
+                      </td>
+                      <td>
+                        <input type="number" style="max-width: 100px;">
+                      </td>
+                      <td>
+                        <button class="btn btn-sm">上传</button>
+                      </td>
+                      <td>
+                        <input type="checkbox">
+                      </td>
+                      <td>
+                        <input type="number" style="max-width: 100px;">
+                      </td>
+                      <td>
+                        <input type="number" style="max-width: 100px;">
+                      </td>
+                      <td>
+                        <input type="checkbox" [(ngModel)]="size.is_default">
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-round btn-danger" style="padding: 4px;">
+                          <i class="material-icons">clear</i>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

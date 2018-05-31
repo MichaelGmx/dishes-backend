@@ -16,6 +16,19 @@ export class DishDetailsComponent implements OnInit {
 
   editable = false;
 
+  lstOf_size = [
+    { size_category: '大小', size_name: '大杯', is_default: true, count: 3},
+    { size_category: '大小', size_name: '中杯', is_default: false, count: 3},
+    { size_category: '大小', size_name: '小杯', is_default: false, count: 3},
+    { size_category: '甜度', size_name: '无糖', is_default: true, count: 3},
+    { size_category: '甜度', size_name: '三分', is_default: false, count: 3},
+    { size_category: '甜度', size_name: '五分', is_default: false, count: 3},
+    { size_category: '冰块', size_name: '少冰', is_default: true, count: 4},
+    { size_category: '冰块', size_name: '正常', is_default: false, count: 4},
+    { size_category: '冰块', size_name: '常温', is_default: false, count: 4},
+    { size_category: '冰块', size_name: '热饮', is_default: false, count: 4}
+  ]
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
