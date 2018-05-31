@@ -1,0 +1,29 @@
+<section style="border: solid 1px #ddd; background-color: #eee;">
+  <div class="row">
+    <label for="size" class="col-md-1 col-form-label">选择子产品规格</label>
+    <mat-select placeholder="Category" name="subCategory" ngClass="btn btn-link" class="col-md-1" [(value)]="selectedSubCategory">
+      <mat-option value="大小">大小</mat-option>
+      <mat-option value="甜度">甜度</mat-option>
+      <mat-option value="冰块">冰块</mat-option>
+    </mat-select>
+    <button type="button" class="btn btn-round btn-sm btn-success col-md-1">
+      <i class="material-icons">add</i>&nbsp;新增类目
+    </button>
+  </div>
+  <div class="row">
+    <label for="size" class="col-md-1 col-form-label">选择大小</label>
+    <mat-select placeholder="Category Value" name="subCategoryVal" ngClass="btn btn-link" class="col-md-1" [(value)]="selectedSubCategoryVal">
+      <mat-option value="大杯">大杯</mat-option>
+      <mat-option value="中杯">中杯</mat-option>
+      <mat-option value="小杯">小杯</mat-option>
+    </mat-select>
+    <button type="button" class="btn btn-round btn-sm btn-success col-md-1">
+      <i class="material-icons">add</i>&nbsp;新增大小
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-1 offset-md-1" no-padding>
+      <button type="button" class="btn btn-round btn-sm btn-success">确定</button>
+    </div>
+  </div>
+</section>
